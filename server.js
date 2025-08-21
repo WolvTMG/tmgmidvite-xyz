@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Fix for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -21,18 +20,15 @@ const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
 
-// Debug: Check if environment variables are loaded
 console.log('Environment check:');
 console.log('PORT:', PORT);
 console.log('CLIENT_ID:', client_id ? '✓ Loaded' : '✗ MISSING');
 console.log('REFRESH_TOKEN:', refresh_token ? '✓ Loaded' : '✗ MISSING');
 
-// Root route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Test endpoint to check Spotify credentials
 app.get('/test-spotify', async (req, res) => {
     try {
         console.log('Testing Spotify credentials...');
@@ -66,12 +62,10 @@ app.get('/test-spotify', async (req, res) => {
     }
 });
 
-// Endpoint to fetch currently playing track
 app.get('/current-track', async (req, res) => {
     try {
         console.log('Refreshing access token...');
         
-        // Get access token using refresh token
         const tokenResponse = await axios.post(
             'https://accounts.spotify.com/api/token',
             new URLSearchParams({
@@ -90,7 +84,6 @@ app.get('/current-track', async (req, res) => {
         const access_token = tokenResponse.data.access_token;
         console.log('Access token refreshed successfully');
 
-        // Get currently playing track
         console.log('Fetching currently playing track...');
         const trackResponse = await axios.get(
             'https://api.spotify.com/v1/me/player/currently-playing',
@@ -136,7 +129,6 @@ app.get('/current-track', async (req, res) => {
     }
 });
 
-// Callback route for Spotify auth (optional)
 app.get('/callback', (req, res) => {
     const authCode = req.query.code;
     if (authCode) {
@@ -151,7 +143,6 @@ app.get('/callback', (req, res) => {
     }
 });
 
-// Health check endpoint
 app.get('/health', (req, res) => {
     res.json({ 
         status: 'OK', 

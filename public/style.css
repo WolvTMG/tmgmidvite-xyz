@@ -91,17 +91,17 @@ body {
 }
 
 .linkPortfolio i:hover {
-    color: #1f8999;     /* color on hover */
+    color: #1f8999;
 }
 
 .linkGithub i:hover {
-    color: #2B3137;     /* color on hover */
+    color: #2B3137;
 }
 
 .linkYoutube i:hover {
-    color: #fc0505;     /* color on hover */
+    color: #fc0505;
 }
 
 .linkDiscord i:hover {
-    color: #7289da;     /* color on hover */
+    color: #7289da;
 }
