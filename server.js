@@ -21,9 +21,12 @@ const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
 
-// Root route
+// Serve ALL files in the "public" folder automatically
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Optional: You can still keep your root route if you want
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Endpoint to fetch currently playing track
