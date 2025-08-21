@@ -14,15 +14,15 @@
         <div class="centerDescription">Without an ego, who are you truly?</div>
 
 
-        <div id="currentTrack">Loading...</div>
+        <div class="currentTrack" id="currentTrack">Loading...</div>
 
         <script>
         async function fetchTrack() {
             try {
                 const res = await fetch('https://tmgmidvite-xyz.onrender.com/current-track');
                 const data = await res.json();
-                document.getElementById('currentTrack').textContent =
-                    data.track ? `I am currently listening to "${data.track}" by ${data.artist}` :
+                document.getElementById('currentTrack').innerHTML =
+                    data.track ? `Currently listening to <div class="currentTrackSong">${data.track}</div> by <div class="currentTrackArtists">${data.artist}</div>` :
                                 'Not playing anything right now.';
             } catch (err) {
                 console.error(err);
@@ -31,7 +31,7 @@
         }
 
         fetchTrack();
-        setInterval(fetchTrack, 30000); // refresh every 30 seconds
+        setInterval(fetchTrack, 10000); // refresh every 10 seconds
         </script>
 
         <div class="centerLinks">
@@ -41,7 +41,7 @@
             <a href="https://github.com/WolvTMG" target="_blank" class="linkGithub">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <a href="https://youtu.be.com/@wolvtmg2585" target="_blank" class="linkYoutube">
+            <a href="https://www.youtube.com/@wolvtmg2045" target="_blank" class="linkYoutube">
                 <i class="fa-brands fa-youtube"></i>
             </a>
             <a href="https://discord.gg/uYCeDP3" target="_blank" class="linkDiscord">
