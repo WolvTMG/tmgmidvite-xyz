@@ -69,6 +69,7 @@ body {
     font-size: 15px;
     text-align: left; 
     margin-top: 15px;
+    margin-bottom: 50px;
 }
 
 .centerLinks {
@@ -91,7 +92,7 @@ body {
 }
 
 .linkPortfolio i:hover {
-    color: #1f8999;
+    color: yellow;
 }
 
 .linkGithub i:hover {
