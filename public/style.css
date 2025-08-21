@@ -1,0 +1,89 @@
+body {
+    background-image: url("images/obito.jpg");
+    background-size: cover;
+    background-position: fixed;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerBox {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 650px;
+    height: 360px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.centerRow {
+    display: flex;
+    align-items: center; 
+    gap: 20px;  
+}
+
+.centerPhoto {
+    max-width: 80px;
+    max-height: 80px;
+    height: auto;
+    width: auto;
+    border-radius: 50%; 
+}
+
+.centerText {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: left; 
+    margin-top: 0;
+}
+
+.centerDescription {
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left; 
+    margin-top: 15px;
+}
+
+.centerLinks {
+    max-width: 100px;
+    max-height: 100px;
+    height: auto;
+    width: auto;
+    margin-top: auto;
+    display: flex;    
+    justify-content: center;  
+    gap: 50px;   
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.centerLinks i {
+    font-size: 40px;  
+    color: white; 
+    transition: color 0.3s;
+}
+
+.linkPortfolio i:hover {
+    color: #1f8999;     /* color on hover */
+}
+
+.linkGithub i:hover {
+    color: #2B3137;     /* color on hover */
+}
+
+.linkYoutube i:hover {
+    color: #fc0505;     /* color on hover */
+}
+
+.linkDiscord i:hover {
+    color: #7289da;     /* color on hover */
+}

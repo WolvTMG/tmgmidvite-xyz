@@ -1,0 +1,52 @@
+<head>
+    <title>TMG - Website</title>
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/ab03fc73b8.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="centerBox">
+        <div class="centerRow">
+            <img class="centerPhoto" src="images/logo.png" alt="Logo">
+            <div class="centerText">wolvtmg</div>
+        </div>
+        <div class="centerDescription">Without an ego, who are you truly?</div>
+
+
+        <div id="currentTrack">Loading...</div>
+
+        <script>
+        async function fetchTrack() {
+            try {
+                const res = await fetch('https://tmgmidvite.xyz/current-track');
+                const data = await res.json();
+                document.getElementById('currentTrack').textContent =
+                    data.track ? `I am currently listening to "${data.track}" by ${data.artist}` :
+                                'Not playing anything right now.';
+            } catch (err) {
+                console.error(err);
+                document.getElementById('currentTrack').textContent = 'Error fetching track';
+            }
+        }
+
+        fetchTrack();
+        setInterval(fetchTrack, 30000); // refresh every 30 seconds
+        </script>
+
+        <div class="centerLinks">
+            <a href="https://tmgmidvite.com" target="_blank" class="linkPortfolio">
+                <i class="fa-solid fa-briefcase"></i>
+            </a>
+            <a href="https://github.com/WolvTMG" target="_blank" class="linkGithub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://youtu.be.com/@wolvtmg2585" target="_blank" class="linkYoutube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="https://discord.gg/uYCeDP3" target="_blank" class="linkDiscord">
+                <i class="fa-brands fa-discord"></i>
+            </a>
+        </div>
+    </div>
+</body>
