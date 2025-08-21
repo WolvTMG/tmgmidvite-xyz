@@ -19,7 +19,7 @@
         <script>
         async function fetchTrack() {
             try {
-                const res = await fetch('https://tmgmidvite-xyz/current-track');
+                const res = await fetch('https://tmgmidvite.xyz/current-track');
                 const data = await res.json();
                 document.getElementById('currentTrack').innerHTML =
                     data.track ? `Currently listening to <div class="currentTrackSong">${data.track}</div> by <div class="currentTrackArtists">${data.artist}</div>` :
