@@ -1,12 +1,23 @@
 body {
-    background-image: url("images/obito.jpg");
-    background-size: cover;
-    background-position: fixed;
     margin: 0;
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("images/obito.jpg");
+    background-size: cover;        /* Ensures the image always fills the viewport */
+    background-position: center;   /* Keeps it centered */
+    background-repeat: no-repeat;  /* Prevents tiling */
+    background-attachment: fixed;  /* Makes it stay in place while scrolling */
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: radial-gradient(circle at center, rgba(255,0,0,0.2), transparent 70%);
+    pointer-events: none;
 }
 
 .centerBox {
@@ -19,6 +30,25 @@ body {
     align-items: center;  
     justify-content: space-between;
     padding: 20px;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out;
+    transform: perspective(1000px) rotateX(0) rotateY(0);
+}
+
+.kanji-text {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "MS Mincho", "SimSong", serif;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 5px;
+    user-select: none;
+    pointer-events: none;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .centerRow {
@@ -47,7 +77,6 @@ body {
 .currentTrack {
     color: white;
     font-size: 15px;
-    margin-top: auto;
     margin-bottom: auto;
     font-family: Arial, Helvetica, sans-serif
 }
@@ -69,7 +98,7 @@ body {
     font-size: 15px;
     text-align: left; 
     margin-top: 15px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .centerLinks {
@@ -82,7 +111,7 @@ body {
     justify-content: center;  
     gap: 50px;   
     color: grey;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .centerLinks i {
@@ -105,4 +134,114 @@ body {
 
 .linkDiscord i:hover {
     color: #7289da;
+}
+
+.player {
+    width: 600px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 12px;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.title {
+    color: grey;
+    margin: 0 0 8px 0;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#seekBar,
+#volume {
+    flex: 1;
+    height: 6px;
+    appearance: none;
+    background: #444;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#seekBar::-webkit-slider-thumb,
+#volume::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+#seekBar::-moz-range-thumb,
+#volume::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+#volume {
+    flex: none;
+    width: 90px;
+}
+
+button {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.link-popup {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.link-popup::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px 5px 0;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.85) transparent transparent;
+}
+
+.centerLinks {
+    position: relative;
+}
+
+.centerLinks a {
+    position: relative;
+}
+
+.glow {
+    animation: neonPulse 1.5s infinite alternate;
+}
+
+@keyframes neonPulse {
+from {
+    text-shadow: 0 0 10px #ff1a1a, 0 0 20px #ff1a1a, 0 0 40px #ff0000;
+    }
+to {
+    text-shadow: 0 0 20px #ff4d4d, 0 0 40px #ff0000, 0 0 60px #b30000;
+    }
 }
