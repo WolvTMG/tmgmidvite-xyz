@@ -11,7 +11,7 @@
         <div class="kanjiText">Welcome | いらっしゃいませ</div>
     </div>
     <div class="videoBackground">
-        <video id="bgVideo">
+        <video id="bgVideo" muted>
             <source src="images/ghost.mp4" type="video/mp4">
         </video>
         <img id="bgFallback" src="images/obito.jpg" alt="Fallback Background">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="player">
-            <audio id="audio" src="images/ghost.mp4"></audio>
+            <audio id="audio" src="sounds/ghost.mp3"></audio>
 
             <div class="controls">
                 <span id="currentTime">00:00</span>
@@ -74,14 +74,15 @@
                 video.pause();
                 playPause.textContent = "▶";
             }
-            audio.addEventListener("ended", () => {
-                playPause.textContent = "▶"; 
-                video.pause();  
-            });
+        });
 
-            video.addEventListener("ended", () => {
-                playPause.textContent = "▶";
-            });
+        audio.addEventListener("ended", () => {
+            playPause.textContent = "▶"; 
+            video.pause();  
+        });
+
+        video.addEventListener("ended", () => {
+            playPause.textContent = "▶";
         });
 
         audio.addEventListener("loadedmetadata", () => {
@@ -218,8 +219,6 @@
         document.addEventListener("DOMContentLoaded", () => {
             const splash = document.getElementById("splash");
             const content = document.querySelector(".centerBox");
-            const audio = document.getElementById("audio");
-            const video = document.getElementById("bgVideo");
 
             splash.addEventListener("click", () => {
                 splash.classList.add("fade-out");
@@ -227,8 +226,8 @@
                 audio.volume = 0.1;
                 video.volume = 0.1;
 
-                audio.play();
-                video.play();
+                if (audio.paused) audio.play();
+                if (video.paused) video.play();
 
                 playPause.textContent = "❚❚";
 
@@ -260,9 +259,6 @@
         });
 
 
-
-
-
         function fadeVideo(paused) {
             if (paused) {
                 video.style.opacity = 0;
@@ -273,8 +269,6 @@
 
         audio.addEventListener("play", () => fadeVideo(false));
         audio.addEventListener("pause", () => fadeVideo(true));
-
-
 
 
         async function fetchTrack() {
