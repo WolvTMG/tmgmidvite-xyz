@@ -6,10 +6,10 @@ body {
     justify-content: center;
     align-items: center;
     background-image: url("images/obito.jpg");
-    background-size: cover;        /* Ensures the image always fills the viewport */
-    background-position: center;   /* Keeps it centered */
-    background-repeat: no-repeat;  /* Prevents tiling */
-    background-attachment: fixed;  /* Makes it stay in place while scrolling */
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }
 
 body::after {
@@ -35,7 +35,7 @@ body::after {
     transform: perspective(1000px) rotateX(0) rotateY(0);
 }
 
-.kanji-text {
+.kanjiText {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -98,7 +98,7 @@ body::after {
     font-size: 15px;
     text-align: left; 
     margin-top: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
 }
 
 .centerLinks {
@@ -198,7 +198,7 @@ button {
     cursor: pointer;
 }
 
-.link-popup {
+.linkPopup {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.85);
     color: white;
@@ -214,7 +214,7 @@ button {
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.link-popup::after {
+.linkPopup::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -244,4 +244,67 @@ from {
 to {
     text-shadow: 0 0 20px #ff4d4d, 0 0 40px #ff0000, 0 0 60px #b30000;
     }
+}
+
+#splash {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+}
+
+#splash.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.videoBackground {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.videoBackground video,
+.videoBackground img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5 ease;
+    opacity: 1;
+    z-index: -1;
+}
+
+.videoBackground video.paused {
+    opacity: 0;
+}
+
+#bgVideo {
+    opacity: 0;  /* hidden until play */
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+#bgFallback {
+    opacity: 1;
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    margin-top: 20%;
 }
