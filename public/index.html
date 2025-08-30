@@ -7,14 +7,14 @@
 
 <body>
     <div id="splash">
-        <div class="centerText">Click anywhere to enter</div>
+        <div class="splashText">Welcome | いらっしゃいませ</div>
         <div class="kanjiText">Welcome | いらっしゃいませ</div>
     </div>
     <div class="videoBackground">
         <video id="bgVideo" muted>
-            <source src="images/ghost.mp4" type="video/mp4">
+            <source src="images/akaza.mp4" type="video/mp4">
         </video>
-        <img id="bgFallback" src="images/obito.jpg" alt="Fallback Background">
+        <img id="bgFallback" src="images/akaza.png" alt="Fallback Background">
     </div>
     <div class="centerBox">
         <div class="kanjiText">不名誉よりも死</div>
@@ -43,14 +43,14 @@
         </div>
 
         <div class="player">
-            <audio id="audio" src="sounds/ghost.mp3"></audio>
+            <audio id="audio" src="sounds/akaza.mp3"></audio>
 
             <div class="controls">
                 <span id="currentTime">00:00</span>
                 <input type="range" id="seekBar" value="0" step="1">
                 <span id="duration">00:00</span>
                 <button id="playPause">▶</button>
-                <input type="range" id="volume" min="0" max="1" step="0.01" value="0.1">
+                <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
             </div>
         </div>
     </div>
@@ -223,8 +223,8 @@
             splash.addEventListener("click", () => {
                 splash.classList.add("fade-out");
 
-                audio.volume = 0.1;
-                video.volume = 0.1;
+                audio.volume = 1;
+                video.volume = 1;
 
                 if (audio.paused) audio.play();
                 if (video.paused) video.play();

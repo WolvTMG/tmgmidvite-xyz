@@ -5,7 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("images/obito.jpg");
+    background-image: url("images/akaza.png");
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;
@@ -16,12 +16,12 @@ body::after {
     content: "";
     position: absolute;
     top:0; left:0; right:0; bottom:0;
-    background: radial-gradient(circle at center, rgba(255,0,0,0.2), transparent 70%);
     pointer-events: none;
 }
 
 .centerBox {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.4);
     width: 650px;
     height: 340px;
     border-radius: 8px;
@@ -74,6 +74,15 @@ body::after {
     margin-top: 0;
 }
 
+.splashText {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
+    font-size: 16px;
+}
+
 .currentTrack {
     color: white;
     font-size: 15px;
@@ -82,13 +91,17 @@ body::after {
 }
 
 .currentTrackSong {
-    color: #fdbb2d;
+    color: #FFA500;
     display: inline-block;
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
 }
 
 .currentTrackArtists {
-    color: #4fc3f7;
+    color: #9B30FF;
     display: inline-block;
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
 }
 
 .centerDescription {
